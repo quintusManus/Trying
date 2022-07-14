@@ -20,7 +20,7 @@ class User(db.Model):
   def __repr__(self):
     return f"User('{self.username}', '{self.email}')"
 
-@app.route("/home")
+@app.route("/")
 def hello_world():
     return render_template('home.html', subtitle='Home Page', text='This is the home page')
     
