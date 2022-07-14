@@ -3,6 +3,7 @@ from forms import RegistrationForm
 from flask_behind_proxy import FlaskBehindProxy
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template, url_for
+import random, threading, webbrowser
 
 app = Flask(__name__)
 proxied = FlaskBehindProxy(app)  ## add this line
@@ -39,6 +40,7 @@ def register():
         flash(f'Account created for {form.username.data}!', 'success')
         return redirect(url_for('home')) # if so - send to home page
     return render_template('register.html', title='Register', form=form)
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")
